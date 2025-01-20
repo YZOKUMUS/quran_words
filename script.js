@@ -1,49 +1,37 @@
 let currentIndex = 0;
-let data = []; // JSON verisini buraya alacağız
+let data = [];
 
-// JSON verisini al
 fetch('data.json')
     .then(response => response.json())
     .then(jsonData => {
         data = jsonData;
-        shuffle(data); // JSON verilerini karıştır
+        shuffle(data);
         loadQuestion();
     });
 
-// Soruyu yükle
 function loadQuestion() {
     const currentData = data[currentIndex];
     document.getElementById('arabic-word').textContent = currentData.arabic_word;
 
     const choicesContainer = document.getElementById('choices-container');
-    choicesContainer.innerHTML = ''; // Önceki şıkları temizle
+    choicesContainer.innerHTML = '';
 
-    // Doğru cevabı al
     const correctChoice = currentData.turkish_meaning;
-
-    // Yanlış şıkları rastgele seç
     const wrongChoices = getRandomWrongChoices(currentIndex);
-
-    // Doğru cevabı ve yanlış şıkları birleştir
     const choices = [correctChoice, ...wrongChoices];
-
-    // Şıkları karıştır
     shuffle(choices);
 
-    // Şıkları ekle
     choices.forEach(choice => {
-        const choiceButton = document.createElement('button');
-        choiceButton.textContent = choice;
-        choiceButton.onclick = () => checkAnswer(choice);
-        choicesContainer.appendChild(choiceButton);
+        const button = document.createElement('button');
+        button.textContent = choice;
+        button.onclick = () => checkAnswer(choice);
+        choicesContainer.appendChild(button);
     });
 
-    // Sonuçları temizle
     document.getElementById('result').textContent = '';
-    document.getElementById('next-button').style.display = 'none'; // Next butonunu gizle
+    document.getElementById('next-button').style.display = 'none';
 }
 
-// Şıkları karıştırma fonksiyonu
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -51,14 +39,11 @@ function shuffle(array) {
     }
 }
 
-// Yanlış şıkları rastgele seçme fonksiyonu
 function getRandomWrongChoices(currentIndex) {
-    // Tüm kelimelerden doğru cevabı çıkararak yanlışları seçiyoruz
     const wrongChoices = data
-        .filter((_, index) => index !== currentIndex)  // Şu anki doğru cevabı çıkart
-        .map(item => item.turkish_meaning);  // Yalnızca Türkçe anlamları al
+        .filter((_, index) => index !== currentIndex)
+        .map(item => item.turkish_meaning);
 
-    // Yanlış şıklar için 3 rastgele seçenek al
     const randomWrongChoices = [];
     while (randomWrongChoices.length < 3) {
         const randomChoice = wrongChoices[Math.floor(Math.random() * wrongChoices.length)];
@@ -66,38 +51,34 @@ function getRandomWrongChoices(currentIndex) {
             randomWrongChoices.push(randomChoice);
         }
     }
-
     return randomWrongChoices;
 }
 
-// Sesli okuma fonksiyonu
 function playAudio() {
-    const currentData = data[currentIndex];
-    const audio = new Audio(currentData.sound_url);
+    const audio = new Audio(data[currentIndex].sound_url);
     audio.play();
 }
 
-// Cevap kontrolü
 function checkAnswer(selectedChoice) {
-    const currentData = data[currentIndex];
     const result = document.getElementById('result');
-    
-    if (selectedChoice === currentData.turkish_meaning) {
+    if (selectedChoice === data[currentIndex].turkish_meaning) {
         result.textContent = 'Doğru!';
+        result.style.color = 'green';
     } else {
-        result.textContent = `Maalesef, doğru cevap: "${currentData.turkish_meaning}" 😟`;
+        result.textContent = `Yanlış! Doğru cevap: "${data[currentIndex].turkish_meaning}"`;
+        result.style.color = 'red';
     }
-
-    // Bir sonraki soruya geçmek için 1 saniye bekle
-    setTimeout(nextQuestion, 1500); // 1000 ms = 1 saniye
+    document.getElementById('next-button').style.display = 'block';
 }
 
-// Bir sonraki soruya geç
 function nextQuestion() {
     currentIndex++;
     if (currentIndex >= data.length) {
-        alert("Oyun Bitti!");
+        document.getElementById('game-container').innerHTML = `
+            <h1>Oyun Bitti!</h1>
+            <p>Tüm soruları tamamladınız.</p>
+        `;
     } else {
-        loadQuestion(); // Yeni soruyu yükle
+        loadQuestion();
     }
 }

@@ -2,73 +2,50 @@
     box-sizing: border-box;
 }
 
-/* Genel stil ayarları */
 body {
     font-family: 'Uthmanic Hafs', Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
+    padding: 0 10px;
 }
 
 #game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    text-align: center;
+}
+
+#arabic-word {
+    font-size: 4rem;
+    cursor: pointer;
+    direction: rtl;
 }
 
 button {
-    margin: 10px;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
     padding: 10px;
-    font-size: 16px;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     cursor: pointer;
-    border-radius: 12px; /* Köşeleri yuvarlat */
-    border: 1px solid #ddd; /* Hafif bir kenarlık */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Gölge efekti */
-    width: 100%; /* Buton genişliğini tam yap */
-    padding: 15px; /* Butonun iç paddingi */
-    margin: 3px 0;
+}
+
+button:hover {
+    background-color: #58CC02;
+    color: white;
 }
 
 #result {
     margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 #next-button {
     margin-top: 20px;
     display: none;
-}
-
-#choices-container {
-    margin-top: 20px;
-}
-
-#choices-container > button {
-    user-select: none;
-}
-
-/* Arapça kelimenin stilini uygula */
-#arabic-word {
-    font-family: 'Uthmanic Hafs', sans-serif;
-    font-size: 5rem;
-    font-weight: lighter;
-    cursor: pointer; /* El simgesi */
-    direction: rtl;
-    text-align: center;
-    outline: none; /* Focus çerçevesini engeller */
-    box-shadow: none; /* Tıklama sonrası yanıp sönmeyi engeller */
-    user-select: none;
-}
-
-button:hover {
-    background-color: #58CC02; /* Duolingo yeşili */
-}
-
-#play-audio {
-    background-color: #d10a95;
+    background-color: #007BFF;
     color: white;
-    border-radius: 12px; /* Köşeleri yuvarlat */
 }

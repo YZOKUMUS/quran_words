@@ -4,21 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess the Word Game</title>
-
-  
-    <!-- Stil dosyanızı linkleyin -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="game-container">
-        <h1 id="arabic-word" onclick="playAudio()">يُزَلْزِلُ</h1> <!-- Arapça kelime tıklanınca sesli okuma olacak -->
-        <div id="choices-container">
-            <!-- Şıklar buraya gelecek -->
-        </div>
+        <h1 id="arabic-word" onclick="playAudio()">يُزَلْزِلُ</h1>
+        <div id="choices-container"></div>
         <div id="result"></div>
-        <button id="next-button" onclick="nextQuestion()" style="display: none;">Next</button>
+        <button id="next-button" onclick="nextQuestion()" style="display: none;">Sonraki</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
