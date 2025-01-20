@@ -28,7 +28,7 @@ button {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Gölge efekti */
     width: 100%; /* Buton genişliğini tam yap */
     padding: 15px; /* Butonun iç paddingi */
-    margin: 10px 0;
+    margin: 3px 0;
 }
 
 #result {
