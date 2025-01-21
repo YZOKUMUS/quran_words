@@ -33,13 +33,26 @@ body {
     font-size: 4rem;
     cursor: pointer;
     direction: rtl;
-    font-family: 'Amiri Quran Colored Regular'; /* Sadece Arapça kelimelerde bu font kullanılacak */
+    font-family: 'Amiri Quran Colored Regular'; /* Kendi fontunu ekledik */
+    border: 2px solid #007BFF;  /* Border rengi ve genişliği */
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px; /* Butonlarla aynı genişlik */
+    margin: 0 auto;
 }
 
+
+
+#arabic-word:hover {
+    border-color: #58CC02;  /* Hover durumunda border rengi değişir */
+    background-color: #f0f8ff;
+}
 button {
     display: block;
     width: 100%;
-    max-width: 300px;
+    max-width: 300px;  /* Butonların maksimum genişliği */
     margin: 10px auto;
     padding: 10px;
     font-size: 1.2rem;
