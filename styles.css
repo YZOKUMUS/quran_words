@@ -54,7 +54,7 @@ button {
     width: 100%;
     max-width: 300px;  /* Butonların maksimum genişliği */
     margin: 10px auto;
-    padding: 10px;
+    padding: px;
     font-size: 1.2rem;
     border: 1px solid #ddd;
     border-radius: 10px;
