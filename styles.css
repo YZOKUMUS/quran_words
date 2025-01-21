@@ -31,7 +31,7 @@ body {
     background: #ffffff; /* Konteynerin arka plan rengi */
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 6px;    /* İç boşluk (padding) düzenlendi */
 }
 
 #arabic-word {
@@ -88,8 +88,8 @@ button:disabled {
 }
 
 #result {
-    margin-top: 20px;
-    font-size: 1.5rem;
+    margin-top: 1px;
+    font-size: 1rem;
 }
 
 #result.success {
