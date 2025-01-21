@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Guess the Word Game">
+    <meta property="og:description" content="Arapça kelime tahmin oyunuyla eğlenin!">
+    <meta property="og:image" content="your-image-url.png">
+    <meta property="og:url" content="your-website-url">
     <title>Guess the Word Game</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="game-container">
-        <h1 id="arabic-word" onclick="playAudio()">يُزَلْزِلُ</h1>
+        <h1 id="arabic-word" onclick="playAudio()" lang="ar" dir="rtl" aria-label="Arapça kelime">يُزَلْزِلُ</h1>
         <div id="choices-container"></div>
         <div id="result"></div>
-        <button id="next-button" onclick="nextQuestion()" style="display: none;">Sonraki</button>
+        <button id="next-button" onclick="nextQuestion()" style="display: none;" aria-label="Sonraki soruya geç">Sonraki</button>
     </div>
-    <script src="script.js"></script>
+    <audio id="audio-player" src="your-audio-file.mp3"></audio>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -2,11 +2,16 @@
     box-sizing: border-box;
 }
 
+body.cursor-disabled {
+    cursor: not-allowed; /* El işaretçisini devre dışı bırak */
+}
+
 body {
     font-family: 'Uthmanic Hafs', Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
     padding: 0 10px;
+    user-select: none; /* Metin seçimini engelle */
 }
 
 #game-container {
@@ -31,6 +36,8 @@ button {
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    touch-action: manipulation;
 }
 
 button:hover {
@@ -38,9 +45,33 @@ button:hover {
     color: white;
 }
 
+button:focus {
+    outline: 2px solid #007BFF;
+    outline-offset: 2px;
+}
+
+button:disabled {
+    cursor: default; /* El işaretçisini kaldır */
+    pointer-events: none; /* Etkileşimleri devre dışı bırak */
+    transition: none; /* Hover veya animasyon efektlerini iptal et */
+}
+
+button:disabled:hover {
+    background-color: inherit; /* Hover rengini iptal et */
+    color: inherit;
+}
+
 #result {
     margin-top: 20px;
     font-size: 1.5rem;
+}
+
+#result.success {
+    color: green;
+}
+
+#result.failure {
+    color: red;
 }
 
 #next-button {
