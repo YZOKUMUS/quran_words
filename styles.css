@@ -57,9 +57,9 @@ button {
     display: block;
     width: 100%;
     max-width: 300px; /* Butonların maksimum genişliği */
-    margin: 10px auto;
-    padding: 10px 15px; /* İç boşluk (padding) düzenlendi */
-    font-size: 1.2rem;
+    margin: 1rem auto;
+    padding: 1px 1px; /* İç boşluk (padding) düzenlendi */
+    font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
