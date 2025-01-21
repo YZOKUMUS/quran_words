@@ -40,7 +40,7 @@ body {
     direction: rtl;
     font-family: 'Amiri Quran Colored Regular'; /* Kendi fontunu ekledik */
     border: 2px solid #007BFF; /* Border rengi ve genişliği */
-    padding: 10px;
+    padding: 1px;
     border-radius: 10px;
     transition: all 0.3s ease;
     width: 100%;
@@ -49,8 +49,8 @@ body {
 }
 
 #arabic-word:hover {
-    border-color: #58CC02; /* Hover durumunda border rengi değişir */
-    background-color: #f0f8ff;
+    border-color: #cc6e02; /* Hover durumunda border rengi değişir */
+    background-color: #83e0f7;
 }
 
 button {
