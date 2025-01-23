@@ -3,6 +3,14 @@ let correctCount = 0;
 let wrongCount = 0;
 let data = [];
 
+// Retrieve stored counters from localStorage, if available
+if (localStorage.getItem('correctCount')) {
+    correctCount = parseInt(localStorage.getItem('correctCount'));
+}
+if (localStorage.getItem('wrongCount')) {
+    wrongCount = parseInt(localStorage.getItem('wrongCount'));
+}
+
 fetch('data.json')
     .then(response => {
         if (!response.ok) {
@@ -52,6 +60,10 @@ function loadQuestion() {
     document.getElementById('next-button').style.display = 'none';
 
     enableCursor();
+
+    // Update the score containers with stored values
+    document.getElementById('correct-count').textContent = correctCount;
+    document.getElementById('wrong-count').textContent = wrongCount;
 }
 
 function getRandomWrongChoices(currentIndex) {
@@ -113,6 +125,14 @@ function checkAnswer(selectedChoice) {
         result.style.color = 'red';
     }
 
+    // Update the score board dynamically
+    document.getElementById('correct-count').textContent = correctCount;
+    document.getElementById('wrong-count').textContent = wrongCount;
+
+    // Store the updated counters in localStorage
+    localStorage.setItem('correctCount', correctCount);
+    localStorage.setItem('wrongCount', wrongCount);
+
     document.getElementById('next-button').style.display = 'block';
 }
 
@@ -134,6 +154,9 @@ function restartGame() {
     currentIndex = 0;
     correctCount = 0;
     wrongCount = 0;
+    // Clear localStorage if restarting
+    localStorage.removeItem('correctCount');
+    localStorage.removeItem('wrongCount');
     shuffle(data);
     loadQuestion();
 }
