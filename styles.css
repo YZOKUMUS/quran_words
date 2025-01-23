@@ -31,7 +31,9 @@ body {
     background: #ffffff; /* Konteynerin arka plan rengi */
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 6px;    /* İç boşluk (padding) düzenlendi */
+    padding: 6px; /* İç boşluk (padding) düzenlendi */
+    position: relative;
+    padding-bottom: 50px; /* Alt kısmı boş bırakmak için padding ekledik */
 }
 
 #arabic-word {
@@ -116,13 +118,59 @@ button:disabled {
 #next-button:hover {
     background-color: #0056b3;
 }
+
+/* Score container at the bottom */
 #score-container {
     text-align: center;
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: 14px; /* Smaller font size for the score */
+    position: absolute;
+    bottom: 10px; /* Positioning at the bottom of the container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.score-box {
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 14px; /* Smaller font size for the score box */
 }
 
 #score-container p {
-    margin: 5px 0;
+    margin: 0;
     font-weight: bold;
+}
+
+/* Add new styles for the correct and wrong answer buttons */
+#correct-button,
+#wrong-button {
+    width: 80px; /* Smaller width for the buttons */
+    font-size: 0.9rem; /* Smaller font size for the buttons */
+    position: absolute;
+    bottom: 10px;
+    padding: 5px 10px;
+}
+
+#correct-button {
+    left: 10px; /* Position the correct button on the left */
+    background-color: #28a745; /* Green for correct answer */
+    color: white;
+}
+
+#wrong-button {
+    right: 10px; /* Position the wrong button on the right */
+    background-color: #dc3545; /* Red for wrong answer */
+    color: white;
+}
+
+#correct-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#wrong-button:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
