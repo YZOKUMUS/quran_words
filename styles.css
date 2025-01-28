@@ -97,3 +97,27 @@ button:hover {
     font-weight: bold;
     color: #333;
 }
+* {
+    box-sizing: border-box;
+    cursor: default; /* Varsayılan tıklanabilir olmayan elemanlar için */
+}
+
+button,
+#arabic-word {
+    cursor: pointer; /* Sadece tıklanabilir elemanlar için el simgesi */
+}
+
+body {
+    font-family: 'Amiri Quran Colored Regular', Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0 10px;
+    background-color: #f8f9fa;
+    color: #333;
+    user-select: none; /* Tüm metnin seçilmesini engeller */
+}
+
+/* Diğer metin ve öğeler için herhangi bir ok simgesi engellenir */
+#game-container, #arabic-word-container, #choices-container {
+    user-select: none; /* Metin seçim engelleme */
+}
