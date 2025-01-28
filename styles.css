@@ -1,102 +1,3 @@
-@font-face {
-    font-family: 'Amiri Quran Colored Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Amiri Quran Colored Regular'), url('AmiriQuranColored-Regular.woff') format('woff');
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Amiri Quran Colored Regular', Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0 10px;
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-#game-container {
-    max-width: 600px;
-    margin: 20px auto;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    position: relative;
-}
-
-.arabic-word-container {
-    position: relative;
-    border: 2px solid #007BFF;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'Amiri Quran Colored Regular', serif;
-    background-color: #e9f5ff;
-}
-
-.arabic-word {
-    display: block;
-    font-size: 4rem;
-    cursor: pointer;
-    direction: rtl;
-    margin-bottom: 10px;
-}
-
-.surah-info {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    font-size: 14pt;
-    color: #555;
-    text-align: right;
-}
-
-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#result {
-    margin-top: 15px;
-    font-size: 1.2rem;
-}
-
-#choices-container {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.score-box {
-    display: inline-block;
-    margin: 5px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #333;
-}
 * {
     box-sizing: border-box;
     cursor: default; /* Varsayılan tıklanabilir olmayan elemanlar için */
@@ -112,12 +13,94 @@ body {
     text-align: center;
     margin: 0;
     padding: 0 10px;
-    background-color: #f8f9fa;
+    background-color: #bbd3eb;
     color: #333;
     user-select: none; /* Tüm metnin seçilmesini engeller */
 }
 
-/* Diğer metin ve öğeler için herhangi bir ok simgesi engellenir */
-#game-container, #arabic-word-container, #choices-container {
-    user-select: none; /* Metin seçim engelleme */
+#game-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #eebf81;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+.arabic-word-container {
+    position: relative;
+    border: 2px solid #095cb6;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Amiri Quran Colored Regular', serif;
+    background-color: #8fc99c;
+}
+
+.arabic-word {
+    display: block;
+    font-size: 4rem;
+    cursor: pointer;
+    direction: rtl;
+    margin-bottom: 10px;
+}
+
+.surah-info {
+    position: absolute;
+    bottom: 180px;
+    right: 10px;
+    font-size: 10pt;
+    color: #555;
+    text-align: right;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  /* Ekranın tamamını kaplamasını sağlarız */
+    height: 50px;  /* Sabit yükseklik */
+    margin: 1px 0;  /* Butonlar arasında mesafe */
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #537497;
+    color: rgb(241, 234, 234);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 1px;
+    font-size: 12px;
+}
+
+#choices-container {
+    display: flex;  /* Flex düzenini sağlamak için */
+    flex-direction: column;  /* Dikey sıralama */
+    align-items: stretch;  /* Eşit genişlikte olmasını sağlamak için */
+    }
+
+#score-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;  /* Konteynerin üst boşluğunu ayarlama */
+}
+
+.score-box {
+    display: inline-block;
+    padding: 0,1px 0,1px;  /* Küçük padding */
+    font-size: 0.7rem;  /* Küçük font boyutu */
+    border: 1px solid #07cc11;
+    border-radius: 0,1px;
+    background-color: #18021400;
+    font-weight: thin;
+    color: #0f0f0f;
 }
