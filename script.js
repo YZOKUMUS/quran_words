@@ -67,26 +67,33 @@ function playAudio() {
         });
 }
 
+function updateScore(correct, wrong) {
+    document.getElementById('correct-count').textContent = correct;
+    document.getElementById('wrong-count').textContent = wrong;
+}
+
+function displayResult(resultText, resultColor) {
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = resultText;
+    resultElement.style.color = resultColor;
+}
+
 function handleChoice(button, selectedChoice, correctChoice) {
     // Şıkları devre dışı bırak
     const allChoices = document.querySelectorAll('.choice-button');
     allChoices.forEach(choice => choice.disabled = true);
 
-    const resultElement = document.getElementById('result');
     if (selectedChoice === correctChoice) {
         correctCount++;
-        resultElement.textContent = 'Doğru!';
-        resultElement.style.color = 'green';
+        displayResult('Doğru!', 'green');
     } else {
         wrongCount++;
-        resultElement.textContent = `Yanlış! Doğru cevap: ${correctChoice}`;
-        resultElement.style.color = 'red';
+        displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
     }
 
     // Puanları güncelle
-    document.getElementById('correct-count').textContent = correctCount;
-    document.getElementById('wrong-count').textContent = wrongCount;
-    
+    updateScore(correctCount, wrongCount);
+
     // Sonraki butonunu göster
     document.getElementById('next-button').style.display = 'block';
 }
@@ -99,6 +106,12 @@ function nextQuestion() {
         correctCount = 0;
         wrongCount = 0;
     }
+
+    // Sonucu temizle
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = ''; // Mesajı temizle
+    resultElement.style.color = ''; // Rengi sıfırla
+
     document.getElementById('next-button').style.display = 'none';
     loadQuestion();
 }
