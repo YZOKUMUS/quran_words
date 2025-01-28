@@ -86,7 +86,7 @@ button:hover {
     display: flex;  /* Flex düzenini sağlamak için */
     flex-direction: column;  /* Dikey sıralama */
     align-items: stretch;  /* Eşit genişlikte olmasını sağlamak için */
-    }
+}
 
 #score-container {
     display: flex;
@@ -96,11 +96,22 @@ button:hover {
 
 .score-box {
     display: inline-block;
-    padding: 0,1px 0,1px;  /* Küçük padding */
+    padding: 5px 10px;  /* Küçük padding */
     font-size: 0.7rem;  /* Küçük font boyutu */
     border: 1px solid #07cc11;
-    border-radius: 0,1px;
-    background-color: #18021400;
-    font-weight: thin;
+    border-radius: 5px; /* Yumuşak köşeler */
+    background-color: rgba(255, 255, 255, 0.8); /* Şeffaf beyaz arka plan */
+    font-weight: bold;
     color: #0f0f0f;
+}
+
+#arabic-word-container .score-box {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Hafif şeffaf beyaz arka plan */
+    padding: 5px 10px;
+    font-size: 0.8rem; /* Küçük font boyutu */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }

@@ -40,9 +40,13 @@ function loadQuestion() {
     choices.forEach(choice => {
         const button = document.createElement('button');
         button.textContent = choice;
-        button.onclick = () => checkAnswer(choice, currentData.turkish_meaning);
+        button.classList.add('choice-button');
+        button.onclick = () => handleChoice(button, choice, currentData.turkish_meaning);
         choicesContainer.appendChild(button);
     });
+
+    // Sonraki butonunu gizle
+    document.getElementById('next-button').style.display = 'none';
 }
 
 function getRandomWrongChoices() {
@@ -63,7 +67,11 @@ function playAudio() {
         });
 }
 
-function checkAnswer(selectedChoice, correctChoice) {
+function handleChoice(button, selectedChoice, correctChoice) {
+    // Şıkları devre dışı bırak
+    const allChoices = document.querySelectorAll('.choice-button');
+    allChoices.forEach(choice => choice.disabled = true);
+
     const resultElement = document.getElementById('result');
     if (selectedChoice === correctChoice) {
         correctCount++;
@@ -74,8 +82,12 @@ function checkAnswer(selectedChoice, correctChoice) {
         resultElement.textContent = `Yanlış! Doğru cevap: ${correctChoice}`;
         resultElement.style.color = 'red';
     }
+
+    // Puanları güncelle
     document.getElementById('correct-count').textContent = correctCount;
     document.getElementById('wrong-count').textContent = wrongCount;
+    
+    // Sonraki butonunu göster
     document.getElementById('next-button').style.display = 'block';
 }
 
