@@ -53,8 +53,9 @@ function getRandomWrongChoices() {
     const wrongChoices = data
         .filter((_, index) => index !== currentIndex)
         .map(item => item.turkish_meaning);
-    return shuffle(wrongChoices).slice(0, 2);
+    return shuffle(wrongChoices).slice(0, 3); // 3 yanlış cevap seçiyoruz
 }
+
 
 function playAudio() {
     const audioPlayer = document.getElementById('audio-player');
