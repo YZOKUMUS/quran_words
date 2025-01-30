@@ -80,24 +80,23 @@ function displayResult(resultText, resultColor) {
 }
 
 function handleChoice(button, selectedChoice, correctChoice) {
-    // Şıkları devre dışı bırak
     const allChoices = document.querySelectorAll('.choice-button');
     allChoices.forEach(choice => choice.disabled = true);
 
     if (selectedChoice === correctChoice) {
         correctCount++;
         displayResult('Doğru!', 'green');
+        showFireworks(); // ✨ Havai fişek efekti ekle ✨
     } else {
         wrongCount++;
         displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
     }
 
-    // Puanları güncelle
     updateScore(correctCount, wrongCount);
-
-    // Sonraki butonunu göster
     document.getElementById('next-button').style.display = 'block';
 }
+
+
 
 function nextQuestion() {
     currentIndex++;
@@ -115,4 +114,140 @@ function nextQuestion() {
 
     document.getElementById('next-button').style.display = 'none';
     loadQuestion();
+}
+function showFireworks() {
+    const container = document.getElementById('arabic-word-container');
+
+    for (let i = 0; i < 8; i++) { // Daha fazla parçacık ekleyelim
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+
+        // Rastgele konum belirleyelim
+        firework.style.left = `${Math.random() * 80 + 10}%`; // Daha geniş alan
+        firework.style.top = `${Math.random() * 60 + 20}%`; 
+
+        // Renkleri çeşitlendirelim
+        const colors = ['gold', 'orange', 'red', 'yellow'];
+        firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        container.appendChild(firework);
+
+        // Efekti biraz daha uzun tutalım (1.2s sürecek)
+        setTimeout(() => firework.remove(), 1200);
+    }
+}
+
+const canvas = document.getElementById("fireworksCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Parçacık sınıfı
+class Particle {
+    constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.size = Math.random() * 6 + 3; // Daha büyük parçacıklar
+        this.speedX = (Math.random() - 0.5) * 4; // Daha yavaş hareket
+        this.speedY = (Math.random() - 0.5) * 4;
+        this.alpha = 1;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha -= 0.015; // Daha yavaş kaybolsun
+    }
+
+    draw() {
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    }
+}
+
+let particles = [];
+
+function showFireworks(x, y) {
+    const colors = ["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#00ffff", "#0000ff", "#8000ff"];
+
+    for (let i = 0; i < 40; i++) { // Daha fazla parçacık
+        particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)]));
+    }
+}
+
+// Animasyon döngüsü
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+        if (particle.alpha <= 0) particles.splice(index, 1);
+    });
+}
+
+animate();
+
+// Efekti doğru cevapta çağır
+function handleChoice(button, selectedChoice, correctChoice) {
+    const allChoices = document.querySelectorAll('.choice-button');
+    allChoices.forEach(choice => choice.disabled = true);
+
+    if (selectedChoice === correctChoice) {
+        correctCount++;
+        displayResult('Doğru!', 'green');
+
+        // Efekti kelimenin üzerinde başlat
+        const wordElement = document.getElementById("arabic-word");
+        const rect = wordElement.getBoundingClientRect();
+        showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    } else {
+        wrongCount++;
+        displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
+    }
+
+    updateScore(correctCount, wrongCount);
+    document.getElementById('next-button').style.display = 'block';
+}
+// Tıklama sesi için yeni ses öğesi
+const clickSound = new Audio("click.mp3");
+
+function handleChoice(button, selectedChoice, correctChoice) {
+    // Tıklama sesini çal
+    clickSound.play().catch(error => console.error("Ses çalınamadı:", error));
+
+    // Tüm şıkları devre dışı bırak
+    const allChoices = document.querySelectorAll('.choice-button');
+    allChoices.forEach(choice => choice.disabled = true);
+
+    if (selectedChoice === correctChoice) {
+        correctCount++;
+        displayResult('Doğru!', 'green');
+
+        // Havai fişek efekti
+        const wordElement = document.getElementById("arabic-word");
+        const rect = wordElement.getBoundingClientRect();
+        showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    } else {
+        wrongCount++;
+        displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
+    }
+
+    // Puanları güncelle
+    updateScore(correctCount, wrongCount);
+
+    // Sonraki butonunu göster
+    document.getElementById('next-button').style.display = 'block';
 }
