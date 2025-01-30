@@ -50,9 +50,9 @@ body {
 .surah-info {
     position: absolute;
     bottom: 180px;
-    right: 10px;
-    font-size: 10pt;
-    color: #555;
+    right: 15px;
+    font-size: 9pt;
+    color: #2a11b6;
     text-align: right;
 }
 
@@ -95,11 +95,11 @@ button:hover {
 }
 
 .score-box {
-    display: inline-block;
+    display: block;
     padding: 5px 10px;  /* Küçük padding */
-    font-size: 0.7rem;  /* Küçük font boyutu */
+    font-size: 0.4rem;  /* Küçük font boyutu */
     border: 1px solid #07cc11;
-    border-radius: 5px; /* Yumuşak köşeler */
+    border-radius: 1px; /* Yumuşak köşeler */
     background-color: rgba(255, 255, 255, 0.8); /* Şeffaf beyaz arka plan */
     font-weight: bold;
     color: #0f0f0f;
