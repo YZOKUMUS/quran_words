@@ -1,43 +1,28 @@
 <!DOCTYPE html>
-<html lang="ar" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Guess the Word Game">
-    <meta property="og:description" content="Arapça kelime tahmin oyunuyla eğlenin!">
-    <meta property="og:image" content="your-image-url.png">
-    <meta property="og:url" content="your-website-url">
-    <title>Guess the Word Game</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Kuran Kelime Oyunu</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="besmele.png" alt="Besmele" style="display: block; margin: 0 auto; width: 275px; height: auto;">
-    <div id="game-container">
-        <div id="arabic-word-container" class="arabic-word-container">
-            <span id="arabic-word" class="arabic-word" onclick="playAudio()">يُزَلْزِلُ</span>
-            <span id="surah-info" class="surah-info">
-                Sure: A’râf - Ayet: 93 - Kelime Sırası: 12
-            </span>
 
-            <!-- Doğru ve yanlış sayıları için konteyner 2 -->
-            <div class="score-box">
-                D: <span id="correct-count">0</span> | Y: <span id="wrong-count">0</span>
-            </div>
-        </div>
+    <div id="game-container">
+        <h2 id="arabic-word"></h2>
+        <p id="surah-info"></p>
+        <audio id="audio-player" controls></audio>
+        <button onclick="playAudio()">🔊 Dinle</button>
 
         <div id="choices-container"></div>
-        <div id="result"></div>
+        <p id="result"></p>
         <button id="next-button" onclick="nextQuestion()" style="display: none;">Sonraki</button>
-    </div>
 
-    <audio id="audio-player" src="your-audio-file.mp3"></audio>
-    <script src="script.js" defer></script>
+        <p>Doğru: <span id="correct-count">0</span> | Yanlış: <span id="wrong-count">0</span></p>
+    </div>
 
     <canvas id="fireworksCanvas"></canvas>
 
-
-
+    <script src="script.js"></script>
 </body>
 </html>
