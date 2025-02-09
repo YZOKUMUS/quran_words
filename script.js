@@ -70,6 +70,7 @@ function handleChoice(button, selectedChoice, correctChoice) {
     if (selectedChoice === correctChoice) {
         correctCount++;
         displayResult('Doğru!', 'green');
+        button.classList.add('correct');  // Butonu yeşile çeviriyoruz
         const wordElement = document.getElementById("arabic-word");
         const rect = wordElement.getBoundingClientRect();
         showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
@@ -81,6 +82,7 @@ function handleChoice(button, selectedChoice, correctChoice) {
     updateScore(correctCount, wrongCount);
     document.getElementById('next-button').style.display = 'block';
 }
+
 
 function nextQuestion() {
     currentIndex++;

@@ -145,3 +145,7 @@ button:hover {
     font-family: 'Amiri Quran Colored', sans-serif; /* Kullanılan font */
     text-align: center;
 }
+.choice-button.correct {
+    background-color: green;
+    color: white;
+}
