@@ -72,15 +72,21 @@ function displayResult(resultText, resultColor) {
 function handleChoice(button, selectedChoice, correctChoice) {
     document.querySelectorAll('.choice-button').forEach(choice => choice.disabled = true);
 
+    // Doğru cevaba tıklanmışsa
     if (selectedChoice === correctChoice) {
         correctCount++;
         displayResult('Doğru!', 'green');
+        button.style.backgroundColor = 'green'; // Doğru cevap butonunu yeşile çevir
+
         const wordElement = document.getElementById("arabic-word");
         const rect = wordElement.getBoundingClientRect();
         showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
     } else {
         wrongCount++;
         displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
+        
+        // Yanlış cevaba tıklanan buton rengini kırmızı yapalım
+        button.style.backgroundColor = 'red';
     }
 
     updateScore(correctCount, wrongCount);

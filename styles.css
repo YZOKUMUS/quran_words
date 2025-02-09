@@ -115,6 +115,7 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .firework {
     position: absolute;
     width: 12px;
@@ -131,13 +132,16 @@ button:hover {
     50% { transform: scale(3); opacity: 0.8; }
     100% { transform: scale(5); opacity: 0; }
 }
+
 #fireworksCanvas {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    z-index: -1;
     pointer-events: none;
-    z-index: 10;
 }
-
+#arabic-word {
+    font-size: 60px; /* Font boyutunu arttırdık */
+    font-family: 'Amiri Quran Colored', sans-serif; /* Kullanılan font */
+    text-align: center;
+}
