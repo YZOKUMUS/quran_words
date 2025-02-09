@@ -26,7 +26,7 @@ function loadQuestion() {
     document.getElementById('surah-info').textContent = 
         `Sure: ${currentData.sure_adi} - Ayet: ${currentData.ayet_no} - Kelime Sırası: ${currentData.kelime_sirasi}`;
 
-    // Ses dosyasını güncelle
+    // Ses dosyasını okuma çubuğuna atıyoruz
     const audioPlayer = document.getElementById('audio-player');
     audioPlayer.src = currentData.sound_url;
 
@@ -53,11 +53,6 @@ function getRandomWrongChoices() {
     return shuffle(wrongChoices).slice(0, 3);
 }
 
-function playAudio() {
-    const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.play().catch(error => console.error('Ses çalınamadı:', error));
-}
-
 function updateScore(correct, wrong) {
     document.getElementById('correct-count').textContent = correct;
     document.getElementById('wrong-count').textContent = wrong;
@@ -72,21 +67,15 @@ function displayResult(resultText, resultColor) {
 function handleChoice(button, selectedChoice, correctChoice) {
     document.querySelectorAll('.choice-button').forEach(choice => choice.disabled = true);
 
-    // Doğru cevaba tıklanmışsa
     if (selectedChoice === correctChoice) {
         correctCount++;
         displayResult('Doğru!', 'green');
-        button.style.backgroundColor = 'green'; // Doğru cevap butonunu yeşile çevir
-
         const wordElement = document.getElementById("arabic-word");
         const rect = wordElement.getBoundingClientRect();
         showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
     } else {
         wrongCount++;
         displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
-        
-        // Yanlış cevaba tıklanan buton rengini kırmızı yapalım
-        button.style.backgroundColor = 'red';
     }
 
     updateScore(correctCount, wrongCount);
