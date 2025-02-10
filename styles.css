@@ -84,7 +84,7 @@ button:hover {
 
 #result {
     margin-top: 1px;
-    font-size: 12px;
+    font-size: 1px;
 }
 
 #choices-container {
@@ -114,7 +114,7 @@ button:hover {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Hafif şeffaf beyaz arka plan */
+    background-color: rgba(170, 12, 12, 0.8); /* Hafif şeffaf beyaz arka plan */
     padding: 5px 10px;
     font-size: 0.8rem; /* Küçük font boyutu */
     border-radius: 5px;
@@ -146,7 +146,7 @@ button:hover {
     pointer-events: none;
 }
 #arabic-word {
-    font-size: 60px; /* Font boyutunu arttırdık */
+    font-size: 51px; /* Font boyutunu arttırdık */
     font-family: 'Amiri Quran Colored', sans-serif; /* Kullanılan font */
     text-align: center;
 }
@@ -215,4 +215,7 @@ button:hover {
     margin: 0 auto;  /* Görseli yatayda ortalar */
     width: 100%;     /* Görseli sayfa genişliğine uyumlu hale getirir */
     max-width: 300px; /* Maksimum genişlik belirler */
+}
+#arabic-word {
+    margin-top: 0.4em;  /* Kelimeyi yukarı kaydırmak için negatif margin kullanıyoruz */
 }
