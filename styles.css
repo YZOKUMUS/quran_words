@@ -201,8 +201,12 @@ button:hover {
 }
 @media (max-width: 768px) {  
     #progress-bar {
-        width: 90%;  /* Küçük ekranlarda butonlarla uyumlu */
+        width: 80%;  /* Küçük ekranlarda butonlarla uyumlu */
         margin: 10px auto; /* Ortalamak için */
     }
 }
 
+#audio-player {
+    width: 300px; /* Çaların genişliğini ayarlıyoruz */
+    height: 25px; /* Çaların yüksekliğini ayarlıyoruz */
+}
