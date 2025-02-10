@@ -219,3 +219,8 @@ button:hover {
 #arabic-word {
     margin-top: 0.4em;  /* Kelimeyi yukarı kaydırmak için negatif margin kullanıyoruz */
 }
+.choice-button {
+    height: 33px; /* Buton yüksekliğini belirleyin */
+    font-size: 18px; /* Yazı boyutunu büyütün */
+    padding: 10px; /* İç boşluk ekleyin */
+}
