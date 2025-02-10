@@ -155,7 +155,7 @@ button:hover {
     color: white;
 }
 #progress-bar {
-    width: 100%; /* Cevap butonlarıyla aynı genişlikte olacak */
+    width: 80%; /* Cevap butonlarıyla aynı genişlikte olacak */
     height: 10px; /* Barın yüksekliği */
     background-color: #ddd; /* Arka plan rengi */
     border-radius: 5px; /* Yuvarlatılmış köşeler */
