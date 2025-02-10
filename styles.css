@@ -26,6 +26,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     position: relative;
+    padding-top:1%; /* Üst boşluğu küçült */
 }
 
 .arabic-word-container {
@@ -45,6 +46,10 @@ body {
     cursor: pointer;
     direction: rtl;
     margin-bottom: 10px;
+    #arabic-word {
+        position: relative;
+        top: -20px; /* Yukarı kaydır */
+    }
 }
 
 .surah-info {
@@ -149,3 +154,43 @@ button:hover {
     background-color: green;
     color: white;
 }
+#progress-bar {
+    width: 100%; /* Cevap butonlarıyla aynı genişlikte olacak */
+    height: 10px; /* Barın yüksekliği */
+    background-color: #ddd; /* Arka plan rengi */
+    border-radius: 5px; /* Yuvarlatılmış köşeler */
+    margin: 10px 0; /* Üst ve alt boşluk */
+    position: relative;
+    overflow: hidden;
+}
+
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #07cc11; /* İlerleme rengi */
+    transition: width 0.5s ease-in-out;
+}
+#next-button {
+    background-color: #d97706; /* Turuncu tonu */
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #b45309;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#next-button:hover {
+    background-color: #b45309; /* Daha koyu turuncu */
+}
+#surah-info {
+    font-size: 12px; /* Daha küçük font */
+    color: #a70b06;
+    text-align: center;
+}
+
