@@ -193,4 +193,16 @@ button:hover {
     color: #a70b06;
     text-align: center;
 }
+#choices-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Butonları ve barı ortalar */
+    width: 100%;
+}
+@media (max-width: 768px) {  
+    #progress-bar {
+        width: 90%;  /* Küçük ekranlarda butonlarla uyumlu */
+        margin: 10px auto; /* Ortalamak için */
+    }
+}
 
