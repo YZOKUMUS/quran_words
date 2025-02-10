@@ -224,3 +224,7 @@ button:hover {
     font-size: 18px; /* Yazı boyutunu büyütün */
     padding: 10px; /* İç boşluk ekleyin */
 }
+
+.choice-button {
+    margin-bottom: 1px; /* Butonlar arasına boşluk ekleyin */
+}
