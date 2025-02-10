@@ -207,6 +207,12 @@ button:hover {
 }
 
 #audio-player {
-    width: 300px; /* Çaların genişliğini ayarlıyoruz */
+    width: 200px; /* Çaların genişliğini ayarlıyoruz */
     height: 25px; /* Çaların yüksekliğini ayarlıyoruz */
+}
+#besmele-image {
+    display: block;
+    margin: 0 auto;  /* Görseli yatayda ortalar */
+    width: 100%;     /* Görseli sayfa genişliğine uyumlu hale getirir */
+    max-width: 300px; /* Maksimum genişlik belirler */
 }
