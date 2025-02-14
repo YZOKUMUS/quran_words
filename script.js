@@ -22,24 +22,24 @@ function shuffle(array) {
 
 function loadQuestion() {
     const currentData = data[currentIndex];
-    document.getElementById('arabic-word').textContent = currentData.arabic_word;
+    document.getElementById('arabic-word').textContent = currentData.kelime;
     document.getElementById('surah-info').textContent = 
-        `Sure: ${currentData.sure_adi} - Ayet: ${currentData.ayet_no} - Kelime Sırası: ${currentData.kelime_sirasi}`;
+        `Sure: ${currentData.sure_adi} - Ayet: ${currentData.ayet_no}`;
 
     // Ses dosyasını okuma çubuğuna atıyoruz
     const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.src = currentData.sound_url;
+    audioPlayer.src = currentData.ses_dosyasi;
 
     // Seçenekleri yükle
     const choicesContainer = document.getElementById('choices-container');
     choicesContainer.innerHTML = '';
-    const choices = shuffle([currentData.turkish_meaning, ...getRandomWrongChoices()]);
-    
+    const choices = shuffle([currentData.anlam, ...getRandomWrongChoices()]);
+
     choices.forEach(choice => {
         const button = document.createElement('button');
         button.textContent = choice;
         button.classList.add('choice-button');
-        button.onclick = () => handleChoice(button, choice, currentData.turkish_meaning);
+        button.onclick = () => handleChoice(button, choice, currentData.anlam);
         choicesContainer.appendChild(button);
     });
 
@@ -49,7 +49,7 @@ function loadQuestion() {
 function getRandomWrongChoices() {
     const wrongChoices = data
         .filter((_, index) => index !== currentIndex)
-        .map(item => item.turkish_meaning);
+        .map(item => item.anlam);
     return shuffle(wrongChoices).slice(0, 3);
 }
 
@@ -70,7 +70,7 @@ function handleChoice(button, selectedChoice, correctChoice) {
     if (selectedChoice === correctChoice) {
         correctCount++;
         displayResult('Doğru!', 'green');
-        button.classList.add('correct');  // Butonu yeşile çeviriyoruz
+        button.classList.add('correct');
         const wordElement = document.getElementById("arabic-word");
         const rect = wordElement.getBoundingClientRect();
         showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
@@ -82,7 +82,6 @@ function handleChoice(button, selectedChoice, correctChoice) {
     updateScore(correctCount, wrongCount);
     document.getElementById('next-button').style.display = 'block';
 }
-
 
 function nextQuestion() {
     currentIndex++;
