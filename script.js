@@ -24,7 +24,7 @@ function loadQuestion() {
     const currentData = data[currentIndex];
     document.getElementById('arabic-word').textContent = currentData.kelime;
     document.getElementById('surah-info').textContent = 
-        `Sure: ${currentData.sure_adi} - Ayet: ${currentData.ayet_no}`;
+        `Sure: ${currentData.sure_adi} - Ayet: ${currentData.ayet_no} - Kelime ID: ${currentData.id}`;
 
     // Ses dosyasını okuma çubuğuna atıyoruz
     const audioPlayer = document.getElementById('audio-player');
