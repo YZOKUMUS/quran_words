@@ -155,3 +155,46 @@ function animate() {
 }
 
 animate();
+// Tıklama sesi için Audio nesnesi
+const clickSound = new Audio('click.mp3');
+
+// Sonraki soru sesi için Audio nesnesi
+const nextSound = new Audio('next.mp3');
+
+function handleChoice(button, selectedChoice, correctChoice) {
+    // Butona tıklayınca ses çal
+    clickSound.play();
+
+    document.querySelectorAll('.choice-button').forEach(choice => choice.disabled = true);
+
+    if (selectedChoice === correctChoice) {
+        correctCount++;
+        displayResult('Doğru!', 'green');
+        button.classList.add('correct');
+        const wordElement = document.getElementById("arabic-word");
+        const rect = wordElement.getBoundingClientRect();
+        showFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    } else {
+        wrongCount++;
+        displayResult(`Yanlış! Doğru cevap: ${correctChoice}`, 'red');
+    }
+
+    updateScore(correctCount, wrongCount);
+    document.getElementById('next-button').style.display = 'block';
+}
+
+function nextQuestion() {
+    // Sonraki soruya geçerken ses çal
+    nextSound.play();
+
+    currentIndex++;
+    if (currentIndex >= data.length) {
+        alert('Oyun bitti!');
+        currentIndex = 0;
+        correctCount = 0;
+        wrongCount = 0;
+    }
+    document.getElementById('result').textContent = '';
+    document.getElementById('next-button').style.display = 'none';
+    loadQuestion();
+}
